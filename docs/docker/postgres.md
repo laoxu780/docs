@@ -3,10 +3,10 @@
 ```shell
 docker run -d \
     --name postgres \
-    -e POSTGRES_DB=tms1024 \
+    -e POSTGRES_DB=tms \
     -e POSTGRES_PASSWORD='qwe123!@#' \
     -e PGDATA=/var/lib/postgresql/data/pgdata \
-    -v /data/postgredata:/var/lib/postgresql/data \
+    -v pgdata:/var/lib/postgresql/data \
     -p 5432:5432 \
     --restart=always \
     postgres:14.10

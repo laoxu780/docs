@@ -35,7 +35,7 @@ spec:
 
 `kubectl exec -it busybox-pod -- sh`
 
-**运行零时busybox容器**
+**运行临时busybox容器**
 ```shell
 kubectl run -i --tty --image busybox:1.28 dns-test --restart=Never --rm
 ```

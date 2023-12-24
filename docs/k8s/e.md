@@ -4,10 +4,15 @@
 192.168.16.81 k8s-master1
 192.168.16.82 k8s-node1
 192.168.16.83 k8s-node2
+192.168.16.84 k8s-node3
 
 
 kubeadm init \
   --apiserver-advertise-address=192.168.16.81
+  
+  
+重新创建token  
+kubeadm token create --print-join-command
 ```
 
 

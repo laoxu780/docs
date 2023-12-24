@@ -25,7 +25,7 @@ spec:
           cpu: 1000m
       command: [ "nginx" ]
       args:
-        - '-g'
+        - '-g
         - 'daemon off;'
       volumeMounts:
         - name: data
