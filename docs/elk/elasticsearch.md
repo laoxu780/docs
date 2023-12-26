@@ -1,27 +1,76 @@
 # elasticsearch
 
+> 文档链接: https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+
 ## 安装
 
 ### docker
+
 ```shell
-docker pull elasticsearch:7.17.16
+# 创建docker网络
+docker network create elastic
 
-docker network create es-net
+# 拉取镜像
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.11.3
 
+
+# 创建临时容器 将配置文件复制到主机
+docker run \
+ --name elasticsearch \
+ --net elastic \
+ -p 9200:9200 \
+ -m 1GB \
+ -it \
+ docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+
+docker cp elasticsearch:/usr/share/elasticsearch/config /root/elk/elasticsearch/
+docker cp elasticsearch:/usr/share/elasticsearch/data /root/elk/elasticsearch/
+docker cp elasticsearch:/usr/share/elasticsearch/plugins /root/elk/elasticsearch/
+docker cp elasticsearch:/usr/share/elasticsearch/logs /root/elk/elasticsearch/
+
+openssl x509 -in /root/elk/elasticsearch/config/certs/http_ca.crt -sha256 -fingerprint | grep SHA256 | sed 's/://g'
+
+# 删除临时容器
+docker stop elasticsearch
+docker rm elasticsearch
+
+# 创建elasticsearch
 docker run -d \
--e "ES_JAVA_POTS=-Xmx512m -Xmx2048m" \
--e "discovery.type=single-node" \
--v es-data:/usr/share/elasticsearch/data \
--v es-plugins:/usr/share/elasticsearch/plugins \
---privileged \
---network es-net \
--p 9200:9200 \
--p 9300:9300 \
-elasticsearch:7.12.1
+ --name elasticsearch \
+ --net elastic \
+ -p 9200:9200 \
+ -m 3GB \
+ -e ES_JAVA_OPTS="-Xms2g -Xmx2g" \
+ -v /root/elk/elasticsearch/config:/usr/share/elasticsearch/config \
+ -v /root/elk/elasticsearch/data:/usr/share/elasticsearch/data \
+ -v /root/elk/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
+ -v /root/elk/elasticsearch/logs:/usr/share/elasticsearch/logs \
+ docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+ 
+# 修改并获取密码
+docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 
+# 获取kibana token 30分钟有效期
+docker exec -it elasticsearch /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
 
+# 获取ca_trusted_fingerprint 
+openssl x509 -in /root/elk/elasticsearch/config/certs/http_ca.crt -sha256 -fingerprint | grep sha256 | sed 's/://g'
 
+# 获取小写 ca_trusted_fingerprint 
+openssl x509 -in /root/elk/elasticsearch/config/certs/http_ca.crt -sha256 -fingerprint | grep sha256 | sed 's/://g' | tr [:upper:] [:lower:]
 
+# 获取大写 ca_trusted_fingerprint 
+openssl x509 -in /root/elk/elasticsearch/config/certs/http_ca.crt -sha256 -fingerprint | grep sha256 | sed 's/://g' | tr [:lower:] [:upper:]
+```
 
-docker run --rm docker.elastic.co/elasticsearch/elasticsearch:7.17.16
+配置文件增加配置 
+`xpack.monitoring.collection.enabled: true`
+```shell
+vim /root/elk/elasticsearch/config/elasticsearch.yml
+```
+添加这个配置以后在kibana中才会显示联机状态，否则会显示脱机状态
+
+重启elasticsearch
+```shell
+docker restart elasticsearch
 ```
