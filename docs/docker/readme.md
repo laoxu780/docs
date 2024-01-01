@@ -37,3 +37,19 @@ docker update --restart=always nginx
 # 容器取消自启动
 docker update --restart=no nginx
 ```
+
+
+## 开启remote api
+
+```shell
+# vim /usr/lib/systemd/system/docker.service
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
+```
+
+**重启**
+```shell
+systemctl daemon-reload
+systemctl restart docker
+```
