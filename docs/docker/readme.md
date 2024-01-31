@@ -49,7 +49,16 @@ ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock
 ```
 
 **重启**
+
 ```shell
 systemctl daemon-reload
 systemctl restart docker
+```
+
+## 常用
+
+**删除none镜像**
+
+```shell
+docker rmi $(docker images -f "dangling=true" -q)
 ```

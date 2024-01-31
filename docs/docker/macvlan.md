@@ -16,6 +16,5 @@ docker network create -d macvlan \
     --gateway=2001:db8:abc8::10 \
      -o parent=eno1 \
      macvlan1
-
 ```
 

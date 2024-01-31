@@ -27,7 +27,9 @@ docker stop kibana
 docker rm kibana
 ```
 
+
 **修改配置文件**
+vim vim /root/elk/kibana/config/kibana.yml
 * 增加：i18n.locale: "zh-CN"
 * 修改：elasticsearch.hosts: ['https://172.20.0.2:9200']，将IP改成elasticsearch的docker ip，注意一定要用https
 * 修改：`xpack.fleet.outputs: [{id: fleet-default-output, name: default, is_default: true, is_default_monitoring: true, type: elasticsearch, hosts: ['https://172.20.0.2:9200'], ca_trusted_fingerprint: xxxxxxxxxx}]`
@@ -55,3 +57,4 @@ docker run -it \
 	-v /root/elk/kibana/logs:/usr/share/kibana/logs \
 	docker.elastic.co/kibana/kibana:8.11.3
 ```
+
