@@ -2,7 +2,7 @@
 
 ```shell
 # 拉取镜像
-docker pull docker.elastic.co/kibana/kibana:8.11.3
+docker pull docker.elastic.co/kibana/kibana:8.11.4
 
 ## 运行临时容器 将配置文件复制到主机
 docker run -it \
@@ -14,13 +14,13 @@ docker run -it \
 	--name kibana \
 	-p 5601:5601 \
 	--net elastic \
-	docker.elastic.co/kibana/kibana:8.11.3
+	docker.elastic.co/kibana/kibana:8.11.4
 	
 	
-docker cp kibana:/usr/share/kibana/config /root/elk/kibana/
-docker cp kibana:/usr/share/kibana/data /root/elk/kibana/
-docker cp kibana:/usr/share/kibana/plugins /root/elk/kibana/
-docker cp kibana:/usr/share/kibana/logs /root/elk/kibana/
+docker cp kibana:/usr/share/kibana/config /srv/elk/kibana/
+docker cp kibana:/usr/share/kibana/data /srv/elk/kibana/
+docker cp kibana:/usr/share/kibana/plugins /srv/elk/kibana/
+docker cp kibana:/usr/share/kibana/logs /srv/elk/kibana/
 
 # 删除临时容器
 docker stop kibana
@@ -51,10 +51,10 @@ docker run -it \
 	--name kibana \
 	-p 5601:5601 \
 	--net elastic \
-	-v /root/elk/kibana/config:/usr/share/kibana/config \
-	-v /root/elk/kibana/data:/usr/share/kibana/data \
-	-v /root/elk/kibana/plugins:/usr/share/kibana/plugins \
-	-v /root/elk/kibana/logs:/usr/share/kibana/logs \
+	-v /srv/elk/kibana/config:/usr/share/kibana/config \
+	-v /srv/elk/kibana/data:/usr/share/kibana/data \
+	-v /srv/elk/kibana/plugins:/usr/share/kibana/plugins \
+	-v /srv/elk/kibana/logs:/usr/share/kibana/logs \
 	docker.elastic.co/kibana/kibana:8.11.3
 ```
 

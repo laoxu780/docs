@@ -1,5 +1,11 @@
 # docker-compose
 
+
+## 安装
+```shell
+curl -L https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+```
+
 **启动服务**
 
 ```shell

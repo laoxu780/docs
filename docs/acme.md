@@ -43,6 +43,6 @@ docker run -it --rm --name certbot \
   -v /etc/letsencrypt:/etc/letsencrypt \
   -v ~/.secrets/cloudflare.ini:/.secrets/cloudflare.ini \
   certbot/dns-cloudflare:v2.4.0 \
-  certonly --dns-cloudflare --agree-tos --non-interactive --dns-cloudflare-credentials /.secrets/cloudflare.ini --email 328340506@qq.com --dns-cloudflare-propagation-seconds 20 -d registry.xuyh.info
+  renew --dns-cloudflare --no-self-upgrade --agree-tos --non-interactive --dns-cloudflare-credentials /.secrets/cloudflare.ini --dns-cloudflare-propagation-seconds 20
 
 ```

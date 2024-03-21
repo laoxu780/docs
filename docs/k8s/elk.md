@@ -2,7 +2,7 @@
 
 ```yaml
  #elasticsearch.yaml
- apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: elasticsearch

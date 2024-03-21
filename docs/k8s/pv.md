@@ -13,8 +13,9 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOncePod
-  hostPath:
-    path: "/data/db"
+  nfs:
+    server: 192.168.16.10
+    path: /elk/elasticsearch/certs
 ```
 
 ## pvc

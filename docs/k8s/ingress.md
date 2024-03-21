@@ -1,5 +1,10 @@
 # ingress
 
+## 参考连接
+
+* https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/
+* https://kubernetes.github.io/ingress-nginx/deploy/
+
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress

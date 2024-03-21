@@ -227,6 +227,11 @@ kubeadm init \
 
 ```
 
+**重新创建token**
+```
+kubeadm token create --print-join-command
+```
+
 ## 安装网络插件
 ```
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml -O

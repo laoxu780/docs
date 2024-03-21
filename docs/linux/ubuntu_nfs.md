@@ -31,3 +31,6 @@ remotehost:/remote/path /local/path nfs defaults 0 0
 ```
 
 192.168.16.2:/mnt/hdd_1/media /mnt/media nfs defaults 0 0
+
+
+mount 192.168.16.10:/nfsshare /mnt/ssd2
