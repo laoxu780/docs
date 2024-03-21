@@ -2,6 +2,7 @@
 
 
 ## docker run
+
 * -a stdin：指定标准输出内容类型 STDIN\STDOUT\STDERR
 * -d：后台运行容器，返回容器ID
 * -i：以交互模式运行容器，通常与-t同时使用
