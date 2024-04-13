@@ -1,6 +1,10 @@
 # Postgres
 
-# 表添加字段
+## 连接数据库
+
+
+
+## 表添加字段
 
 ```sql
 ALTER TABLE api_config
