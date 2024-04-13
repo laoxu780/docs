@@ -24,7 +24,7 @@ docker run -d \
 --name samba \
 -p 139:139 \
 -p 445:445 \
--v /hdd_1/share:/share \
+-v /mnt/disk1:/share \
 dperson/samba \
 -u "xuyh;1015" \
 -s "share;/share;yes;no;no;xuyh;xuyh;xuyh;none"
