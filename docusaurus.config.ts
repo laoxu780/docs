@@ -25,8 +25,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -59,10 +59,10 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: '我的站点',
-      logo: {
+/*      logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
-      },
+      },*/
       items: [
         {
           type: 'docSidebar',
@@ -71,17 +71,17 @@ const config: Config = {
           label: '文档',
         },
         // {to: '/blog', label: 'Blog', position: 'left'},
-        {
+/*        {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
           position: 'right',
-        },
+        },*/
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
-        {
+/*        {
           title: 'Docs',
           items: [
             {
@@ -119,7 +119,7 @@ const config: Config = {
               href: 'https://github.com/facebook/docusaurus',
             },
           ],
-        },
+        },*/
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
