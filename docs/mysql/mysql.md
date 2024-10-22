@@ -41,11 +41,11 @@ default-storage-engine=INNODB
 default_authentication_plugin=mysql_native_password
 [mysql]
 # 设置mysql客户端默认字符集
-default-character-set=utf8
+default-character-set=utf8mb4
 [client]
 # 设置mysql客户端连接服务端时默认使用的端口
 port=3306
-default-character-set=utf8
+default-character-set=utf8mb4
 ```
 
 ### 初始化
