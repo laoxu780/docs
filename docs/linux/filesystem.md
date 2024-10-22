@@ -35,3 +35,25 @@ mount            # 列出所有挂载的文件系统信息，并显示文件系�
 mount -t ext4    # 列出所有ext4类型的文件系统信息，并显示文件系统类型
 mount /dev/sda1  # 挂载/dev/sda1分区，并显示文件系统类型
 ```
+
+### 挂载samba远程目录
+
+**安装需要的包**
+
+```shell
+apt install cifs-utils
+```
+**指定密码**
+
+`nano /root/.smbcredentials`
+
+```text
+username=xuyh
+password=1015
+```
+
+**修改/etc/fstab文件**
+增加一行
+```text
+//192.168.16.5/share /mnt/share cifs credentials=/root/.smbcredentials,iocharset=utf8 0 0
+```
